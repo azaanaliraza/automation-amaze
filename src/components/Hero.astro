@@ -1,0 +1,90 @@
+---
+import HeroEngine from './react/HeroEngine.tsx';
+---
+
+<section id="top" data-gsap-hero class="noise relative overflow-hidden pt-28 sm:pt-36 pb-10 sm:pb-16">
+  <div class="grid-lines absolute inset-0" aria-hidden="true"></div>
+  <div class="hero-orb animate-drift absolute -top-32 left-1/2 -translate-x-1/2 size-[640px] rounded-full bg-[#8A6A45]/[0.07] blur-[120px]" aria-hidden="true"></div>
+  <div class="hero-orb absolute top-40 -left-40 size-[420px] rounded-full bg-[#DCC096]/[0.05] blur-[100px]" aria-hidden="true"></div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-10">
+      <div>
+        <p class="reveal inline-flex items-center gap-2 rounded-full border border-[#201A14]/10 bg-[#201A14]/[0.04] px-3.5 py-1.5 font-mono2 text-[11px] uppercase tracking-[0.18em] text-[#201A14]/60">
+          <span class="size-1.5 rounded-full bg-[#241C13]"></span>
+          AI automation agency · for local businesses
+        </p>
+        <h1 data-split class="mt-6 font-display font-semibold tracking-[-0.035em] leading-[0.98] text-[clamp(2.75rem,7.2vw,5.5rem)]">
+          Your business is talking. We make it work for you.
+        </h1>
+        <p class="reveal mt-6 max-w-xl text-[16px] sm:text-lg leading-relaxed text-[#201A14]/60" style="--reveal-delay:120ms">
+          We build AI chatbots and automation systems for local businesses — handling leads, WhatsApp conversations, bookings, follow-ups, FAQs, and repetitive work automatically.
+        </p>
+        <div class="reveal mt-8 flex flex-col sm:flex-row gap-3" style="--reveal-delay:200ms">
+          <a href="#book" data-magnetic class="btn-tactile inline-flex items-center justify-center gap-2 rounded-full bg-[#241C13] px-7 py-3.5 font-semibold text-[#FAF7F1] hover:bg-[#372B1A] hover:shadow-[0_0_40px_rgba(138,106,69,0.35)]">
+            Build My AI System <span class="arr" aria-hidden="true">→</span>
+          </a>
+          <a href="#demo" data-magnetic class="btn-tactile inline-flex items-center justify-center gap-2 rounded-full border border-[#201A14]/15 px-7 py-3.5 text-[#201A14]/85 hover:border-[#201A14]/35 hover:text-[#201A14]">
+            <span class="grid size-6 place-items-center rounded-full bg-[#201A14]/10 text-[12px]">▶</span>
+            See It In Action
+          </a>
+        </div>
+        <div class="reveal mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono2 text-[11px] uppercase tracking-[0.16em] text-[#201A14]/35" style="--reveal-delay:280ms">
+          <span>Dentists · Salons · Clinics</span>
+          <span class="text-[#6E5334]/50">/</span>
+          <span>Gyms · Restaurants</span>
+          <span class="text-[#6E5334]/50">/</span>
+          <span>Real Estate · Local Services</span>
+        </div>
+      </div>
+
+      <div class="reveal relative" style="--reveal-delay:150ms">
+        <div class="absolute -inset-3 rounded-[24px] border border-[#8A6A45]/10" aria-hidden="true"></div>
+        <HeroEngine client:visible />
+        <div class="mt-3 flex items-center justify-between font-mono2 text-[10px] uppercase tracking-[0.18em] text-[#201A14]/30 px-1">
+          <span>Fig. 01 — conversation → system</span>
+          <span class="text-[#6E5334]/70">5 live scenarios</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- proof strip -->
+    <div class="reveal mt-14 grid grid-cols-2 md:grid-cols-4 gap-px overflow-hidden rounded-2xl border border-[#201A14]/10 bg-[#201A14]/10" style="--reveal-delay:100ms">
+      {[
+        ['24/7', 'AI answers instantly, even at 11:47 PM'],
+        ['WhatsApp-first', 'Meet customers where they already chat'],
+        ['Calendar-synced', 'Bookings land straight in your calendar'],
+        ['Human handoff', 'AI hands over to staff when it matters'],
+      ].map(([t, s]) => (
+        <div class="bg-white px-5 py-4">
+          <p class="font-display font-semibold text-[#6E5334]">{t}</p>
+          <p class="mt-1 text-[13px] text-[#201A14]/50 leading-snug">{s}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+<script>
+  // @ts-nocheck
+  // Progressive enhancement: GSAP entrance + orb parallax (desktop, motion-safe only)
+  (async () => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    try {
+      const { gsap } = await import('gsap');
+      const hero = document.querySelector('[data-gsap-hero]');
+      if (!hero) return;
+      gsap.from(hero.querySelectorAll('h1 .w'), {
+        yPercent: 60, opacity: 0, duration: 1.1, stagger: 0.05, ease: 'power4.out', delay: 0.1, clearProps: 'all',
+      });
+      const orbs = hero.querySelectorAll('.hero-orb');
+      hero.addEventListener('mousemove', (e) => {
+        const r = hero.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        orbs.forEach((o, i) => gsap.to(o, { x: x * (20 + i * 14), y: y * (16 + i * 10), duration: 1.2, ease: 'power2.out', overwrite: 'auto' }));
+      });
+    } catch {}
+  })();
+</script>
+</section>

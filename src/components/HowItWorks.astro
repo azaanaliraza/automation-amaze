@@ -1,0 +1,62 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+const steps = [
+  { n: '01', t: 'Understand', d: 'We map how your business currently handles leads, customers and repetitive tasks — every message, every missed call, every manual booking.', points: ['Conversation audit', 'Tool inventory', 'Automation map'] },
+  { n: '02', t: 'Build', d: 'We connect AI, WhatsApp, calendars, CRMs and your existing tools into one system trained on your services, prices and hours.', points: ['WhatsApp + website AI', 'Calendar + CRM wiring', 'Trained on your business'] },
+  { n: '03', t: 'Automate', d: 'Your system starts handling repetitive conversations and workflows automatically — with human handoff wherever judgment matters.', points: ['Goes live in days', 'Human handoff built-in', 'Ongoing support'] },
+];
+---
+
+<section id="how" class="section-bone relative py-24 sm:py-32 overflow-hidden">
+  <div class="relative mx-auto max-w-6xl px-4 sm:px-6">
+    <SectionHeading dark={false}
+      eyebrow="How it works"
+      title="From chaos to system in three steps."
+    />
+    <div class="relative mt-14" id="how-timeline">
+      <div class="absolute left-[27px] sm:left-1/2 top-2 bottom-2 w-px bg-[#241C13]/10 sm:-translate-x-1/2" aria-hidden="true"></div>
+      <div id="how-line" class="absolute left-[27px] sm:left-1/2 top-2 w-px bg-[#241C13] sm:-translate-x-1/2 transition-all duration-300" style="height:0" aria-hidden="true"></div>
+      <div class="space-y-6">
+        {steps.map((s, i) => (
+          <div class:list={["how-step reveal relative grid gap-4 sm:grid-cols-2 sm:gap-12 items-start", i % 1 === 0 && ""]}>
+            <div class="flex gap-5 sm:justify-end sm:text-right sm:pr-4 pl-14 sm:pl-0">
+              <div class:list={["sm:order-2 relative z-10 grid size-14 shrink-0 place-items-center rounded-2xl font-display font-bold text-lg", "bg-[#241C13] text-[#E3C99B]"]}>{s.n}</div>
+              <div class="sm:order-1">
+                <h3 class="font-display text-[clamp(1.6rem,3.5vw,2.5rem)] font-semibold tracking-tight leading-none">{s.t}</h3>
+                <p class="mt-3 text-[15px] leading-relaxed text-[#241C13]/60 max-w-md sm:ml-auto">{s.d}</p>
+                <div class="mt-3 flex flex-wrap gap-1.5 sm:justify-end">
+                  {s.points.map((p) => (
+                    <span class="rounded-full border border-[#241C13]/15 bg-white px-2.5 py-1 font-mono2 text-[10px] uppercase tracking-widest text-[#241C13]/60">{p}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div class="hidden sm:block"></div>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div class="reveal mt-12 flex flex-col sm:flex-row items-center justify-center gap-3">
+      <a href="#book" data-magnetic class="btn-tactile rounded-full bg-[#241C13] px-7 py-3.5 font-semibold text-[#E3C99B]">Start with step 01 — free <span class="arr">→</span></a>
+      <span class="font-mono2 text-[11px] uppercase tracking-[0.16em] text-[#241C13]/40">Typical implementation: days, not months*</span>
+    </div>
+  </div>
+</section>
+
+<script>
+      // @ts-nocheck
+  (() => {
+    const wrap = document.getElementById('how-timeline');
+    const line = document.getElementById('how-line');
+    if (!wrap || !line) return;
+    const onScroll = () => {
+      const r = wrap.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const p = Math.min(1, Math.max(0, (vh * 0.7 - r.top) / (r.height * 0.85)));
+      line.style.height = `${p * 100}%`;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>

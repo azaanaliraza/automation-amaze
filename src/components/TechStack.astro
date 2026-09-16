@@ -1,0 +1,62 @@
+---
+import SectionHeading from './SectionHeading.astro';
+---
+
+<section id="stack" class="relative overflow-hidden border-t border-[#201A14]/10 bg-[#F3EDE0] py-24 sm:py-32">
+  <div class="relative mx-auto max-w-6xl px-4 sm:px-6">
+    <SectionHeading align="center"
+      eyebrow="Ecosystem"
+      title="Plugs into the tools you already use."
+      copy="No rip-and-replace. We connect WhatsApp, calendars, and customer systems through one AI layer."
+    />
+
+    <div class="reveal relative mx-auto mt-14 max-w-3xl rounded-3xl border border-[#201A14]/10 bg-white p-6 sm:p-10 overflow-hidden">
+      <div class="grid-lines absolute inset-0 opacity-70" aria-hidden="true"></div>
+      <!-- center -->
+      <div class="relative flex flex-col items-center">
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 w-full font-mono2 text-[11px] uppercase tracking-[0.14em]">
+          {['WhatsApp','Google Calendar','Website','Instagram','Gmail','Google Sheets','CRM','Slack','Telegram'].map((t) => (
+            <div class="stack-node rounded-xl border border-[#201A14]/12 bg-[#201A14]/[0.04] px-3 py-2.5 text-center text-[#201A14]/65 transition-all duration-500">◌ {t}</div>
+          ))}
+        </div>
+        <div class="my-2 flex flex-col items-center" aria-hidden="true">
+          <div class="h-6 w-px bg-gradient-to-b from-[#201A14]/20 to-[#8A6A45]"></div>
+        </div>
+        <div id="stack-core" class="relative z-10 rounded-2xl bg-[#241C13] px-8 py-4 text-center shadow-[0_0_60px_rgba(138,106,69,0.3)]">
+          <p class="font-display text-xl font-bold tracking-tight text-[#FAF7F1]">✦ AMAZE AI</p>
+          <p class="font-mono2 text-[10px] uppercase tracking-[0.2em] text-[#FAF7F1]/60">understand → decide → act</p>
+        </div>
+        <div class="my-2 h-6 w-px bg-gradient-to-b from-[#8A6A45] to-[#201A14]/20" aria-hidden="true"></div>
+        <div class="flex flex-wrap justify-center gap-2 font-mono2 text-[11px] uppercase tracking-[0.14em]">
+          {['APIs','Webhooks','Email / Forms'].map((t) => (
+            <div class="stack-node rounded-xl border border-[#8A6A45]/25 bg-[#8A6A45]/[0.06] px-4 py-2.5 text-[#6E5334]/90">→ {t}</div>
+          ))}
+        </div>
+      </div>
+      <svg class="pointer-events-none absolute inset-0 h-full w-full opacity-30" aria-hidden="true">
+        <defs><pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="rgba(138,106,69,0.25)"/></pattern></defs>
+        <rect width="100%" height="100%" fill="url(#dots)" />
+      </svg>
+    </div>
+    <p class="reveal mt-6 text-center font-mono2 text-[11px] uppercase tracking-[0.16em] text-[#201A14]/30">Only integrations we actually support are deployed — ask us about yours</p>
+  </div>
+</section>
+
+<script>
+      // @ts-nocheck
+  (() => {
+    const nodes = document.querySelectorAll('.stack-node');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !nodes.length) return;
+    let i = 0;
+    setInterval(() => {
+      nodes.forEach((n, j) => {
+        const on = j === i % nodes.length;
+        n.style.borderColor = on ? 'rgba(138,106,69,0.6)' : '';
+        n.style.color = on ? '#6E5334' : '';
+        n.style.boxShadow = on ? '0 0 24px rgba(138,106,69,0.15)' : '';
+      });
+      i++;
+    }, 700);
+  })();
+</script>

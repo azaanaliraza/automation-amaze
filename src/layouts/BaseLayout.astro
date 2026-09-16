@@ -1,0 +1,211 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonical?: string;
+}
+
+const {
+  title = 'Amaze Matrix — AI Automation Agency for Local Businesses | Chatbots, WhatsApp & Booking Systems',
+  description = 'We build AI chatbots and automation systems for dentists, salons, clinics, gyms, restaurants, real estate and local businesses — turning WhatsApp conversations, website visitors and missed calls into booked appointments, automatically.',
+  ogImage = '/og-image.svg',
+  canonical = 'https://amazematrix.agency/',
+} = Astro.props;
+
+const site = 'https://amazematrix.agency';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#FAF7F1" />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Amaze Matrix" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={site + ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={site + ogImage} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Amaze Matrix",
+      "description": description,
+      "url": site,
+      "slogan": "We build AI systems that work while you don't.",
+      "areaServed": ["United Arab Emirates", "Dubai", "Abu Dhabi", "Sharjah"],
+      "priceRange": "$$",
+      "makesOffer": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Chatbots for business" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "WhatsApp automation" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Appointment automation" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lead qualification systems" } }
+      ],
+      "sameAs": []
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Can you automate WhatsApp?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We build WhatsApp automation that answers FAQs, qualifies leads, books appointments and follows up automatically, connected to your calendar and CRM." } },
+        { "@type": "Question", "name": "Can it book appointments?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The AI checks real availability, proposes slots, confirms bookings and sends reminders." } },
+        { "@type": "Question", "name": "What kind of businesses do you work with?", "acceptedAnswer": { "@type": "Answer", "text": "Appointment and lead-driven local businesses: dentists, salons, clinics, gyms, restaurants, real estate, car dealers, beauty clinics, coaching centres and home services." } }
+      ]
+    })} />
+  </head>
+  <body class="antialiased">
+    <div id="cursor-dot" class="hidden md:block" aria-hidden="true"></div>
+    <div id="cursor-ring" class="hidden md:block" aria-hidden="true"></div>
+
+    <slot />
+
+    <script>
+      // @ts-nocheck
+      // ---- Lenis smooth scroll (progressive, reduced-motion aware) ----
+      (async () => {
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduce) return;
+        try {
+          const { default: Lenis } = await import('lenis');
+          const lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
+          const raf = (t) => { lenis.raf(t); requestAnimationFrame(raf); };
+          requestAnimationFrame(raf);
+          document.querySelectorAll('a[href^="#"]').forEach((a) => {
+            a.addEventListener('click', (e) => {
+              const id = a.getAttribute('href');
+              if (!id || id === '#') return;
+              const el = document.querySelector(id);
+              if (el) { e.preventDefault(); lenis.scrollTo(el, { offset: -80 }); }
+            });
+          });
+          // @ts-ignore
+          window.__lenis = lenis;
+        } catch {}
+      })();
+    </script>
+
+    <script>
+      // @ts-nocheck
+      // ---- Reveal on scroll + split text + counters + nav state ----
+      (() => {
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // split headings into word spans
+        document.querySelectorAll('[data-split]').forEach((el) => {
+          const text = el.textContent || '';
+          // preserve inner HTML line breaks: split by words
+          const words = text.trim().split(/\s+/);
+          el.setAttribute('aria-label', text.trim());
+          el.innerHTML = words.map((w, i) => `<span class="w" aria-hidden="true"><span class="wi" style="--i:${i}">${w}</span></span>`).join(' ');
+        });
+
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((en) => {
+            if (en.isIntersecting) {
+              en.target.classList.add('is-in');
+              // counters
+              en.target.querySelectorAll?.('[data-count]').forEach((c) => {
+                if (c.dataset.done) return;
+                c.dataset.done = '1';
+                const target = parseFloat(c.dataset.count || '0');
+                if (reduce) { c.textContent = String(target); return; }
+                const t0 = performance.now(), dur = 1400;
+                const tick = (t) => {
+                  const p = Math.min(1, (t - t0) / dur);
+                  const e = 1 - Math.pow(1 - p, 3);
+                  c.textContent = String(Math.round(target * e));
+                  if (p < 1) requestAnimationFrame(tick);
+                };
+                requestAnimationFrame(tick);
+              });
+              io.unobserve(en.target);
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+        document.querySelectorAll('.reveal, [data-split]').forEach((el) => io.observe(el));
+
+        // nav transform
+        const shell = document.getElementById('nav-shell');
+        const onScroll = () => {
+          if (!shell) return;
+          shell.classList.toggle('is-scrolled', window.scrollY > 24);
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+      })();
+    </script>
+
+    <script>
+      // @ts-nocheck
+      // ---- cursor + magnetic + tilt (desktop only) ----
+      (() => {
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const coarse = window.matchMedia('(pointer: coarse)').matches;
+        if (reduce || coarse) return;
+        const dot = document.getElementById('cursor-dot');
+        const ring = document.getElementById('cursor-ring');
+        if (!dot || !ring) return;
+        let mx = -100, my = -100, rx = -100, ry = -100;
+        window.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; }, { passive: true });
+        const loop = () => {
+          rx += (mx - rx) * 0.16; ry += (my - ry) * 0.16;
+          dot.style.transform = `translate(${mx - 3}px, ${my - 3}px)`;
+          const s = ring.classList.contains('is-hover') ? 28 : 16;
+          ring.style.transform = `translate(${rx - s}px, ${ry - s}px)`;
+          requestAnimationFrame(loop);
+        };
+        loop();
+        document.querySelectorAll('a, button, [data-hover]').forEach((el) => {
+          el.addEventListener('mouseenter', () => ring.classList.add('is-hover'));
+          el.addEventListener('mouseleave', () => ring.classList.remove('is-hover'));
+        });
+
+        // magnetic
+        document.querySelectorAll('[data-magnetic]').forEach((el) => {
+          const strength = 18;
+          el.addEventListener('mousemove', (e) => {
+            const r = el.getBoundingClientRect();
+            const x = e.clientX - r.left - r.width / 2;
+            const y = e.clientY - r.top - r.height / 2;
+            el.style.transform = `translate(${(x / r.width) * strength}px, ${(y / r.height) * strength}px)`;
+          });
+          el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+        });
+
+        // tilt
+        document.querySelectorAll('[data-tilt]').forEach((card) => {
+          card.addEventListener('mousemove', (e) => {
+            const r = card.getBoundingClientRect();
+            const px = (e.clientX - r.left) / r.width - 0.5;
+            const py = (e.clientY - r.top) / r.height - 0.5;
+            card.style.transform = `perspective(900px) rotateX(${(-py * 7).toFixed(2)}deg) rotateY(${(px * 9).toFixed(2)}deg) translateY(-3px)`;
+          });
+          card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+        });
+      })();
+    </script>
+  </body>
+</html>

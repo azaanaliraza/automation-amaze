@@ -1,0 +1,54 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+const faqs = [
+  ['What kind of businesses do you work with?', 'Appointment and lead-driven local businesses: dentists, salons, clinics, gyms, restaurants, real-estate agents, car dealerships, beauty clinics, coaching centres, home services — basically, if your customers message you, we can automate it.'],
+  ['Can you automate WhatsApp?', 'Yes. We build WhatsApp automation that answers FAQs, qualifies leads, books appointments, sends reminders and follows up — connected to your calendar and customer systems.'],
+  ['Can it book appointments?', 'Yes. The AI checks real availability, proposes slots, confirms the booking, and sends confirmations and reminders on WhatsApp.'],
+  ['Can it connect to Google Calendar?', 'Yes — Google Calendar is a core integration. Bookings, reschedules and cancellations stay synchronized automatically.'],
+  ['Can it work with our existing CRM?', 'In most cases, yes. We connect conversations to common CRMs, Google Sheets, or your existing customer systems via APIs and webhooks. Tell us what you use and we’ll confirm.'],
+  ['Can the AI hand conversations to a human?', 'Always. The AI handles the repetitive parts and hands over to your staff the moment something needs judgment, empathy, or a human decision — with full conversation context.'],
+  ['Can you build a custom workflow?', 'That’s the whole point. We map your specific process — services, prices, hours, qualification questions, approval rules — and build the AI agent around it.'],
+  ['How long does implementation take?', 'Simple systems typically go live in days; more complex multi-tool workflows take a few weeks. You’ll get a timeline after a free automation audit.'],
+  ['Do we need technical knowledge?', 'No. You explain your business; we handle setup, training data, integrations and testing. Your team gets a simple dashboard and WhatsApp-level simplicity.'],
+  ['Where is our customer data stored?', 'Customer data stays in the systems you approve — your calendar, CRM, and messaging provider. We follow least-privilege access and can walk you through exactly where each piece of data lives.'],
+  ['Can we use our own AI model?', 'Yes, where it makes sense. We typically start with proven hosted models for speed and quality, and can discuss private or self-hosted options for sensitive requirements.'],
+  ['What happens if the AI doesn’t know the answer?', 'It says so honestly, captures the question, and routes it to your team — then learns from your answer so it handles it next time. No hallucinating prices or policies.'],
+  ['Do you provide ongoing support?', 'Yes. Monitoring, improvements, and support are part of every deployment. Your system keeps getting sharper as real conversations come in.'],
+];
+---
+
+<section id="faq" class="relative border-t border-[#201A14]/10 bg-[#FAF7F1] py-24 sm:py-32">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6">
+    <SectionHeading align="center" eyebrow="FAQ" title="Straight answers." />
+    <div class="mt-10 space-y-2.5">
+      {faqs.map(([q, a], i) => (
+        <div class="faq-item reveal rounded-2xl border border-[#201A14]/10 bg-white transition-colors hover:border-[#201A14]/20" data-open={i === 0 ? "true" : "false"} style={`--reveal-delay:${Math.min(i,6)*40}ms`}>
+          <button class="faq-btn flex w-full items-center justify-between gap-4 px-5 sm:px-6 py-4 text-left" aria-expanded={i===0 ? "true" : "false"}>
+            <span class="font-display text-[15.5px] sm:text-[17px] font-medium tracking-tight">{q}</span>
+            <span class="faq-icon grid size-8 shrink-0 place-items-center rounded-full border border-[#201A14]/15 text-lg leading-none text-[#6E5334]">+</span>
+          </button>
+          <div class="faq-panel"><div class="faq-inner"><p class="px-5 sm:px-6 pb-5 text-[14.5px] leading-relaxed text-[#201A14]/60">{a}</p></div></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+      // @ts-nocheck
+  (() => {
+    document.querySelectorAll('.faq-item').forEach((item) => {
+      const btn = item.querySelector('.faq-btn');
+      btn?.addEventListener('click', () => {
+        const open = item.getAttribute('data-open') === 'true';
+        document.querySelectorAll('.faq-item').forEach((o) => {
+          o.setAttribute('data-open', 'false');
+          o.querySelector('.faq-btn')?.setAttribute('aria-expanded', 'false');
+        });
+        item.setAttribute('data-open', String(!open));
+        btn.setAttribute('aria-expanded', String(!open));
+      });
+    });
+  })();
+</script>

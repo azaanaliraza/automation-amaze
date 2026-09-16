@@ -1,0 +1,17 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import IndustriesExplorer from './react/IndustriesExplorer.tsx';
+---
+
+<section id="industries" class="relative border-t border-[#201A14]/10 bg-[#FAF7F1] py-24 sm:py-32 overflow-hidden">
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6">
+    <SectionHeading
+      eyebrow="Industries"
+      title="If your customers message you, we can automate it."
+      copy="Pick your business — see the exact workflow we'd build for you."
+    />
+    <div class="reveal mt-10">
+      <IndustriesExplorer client:visible />
+    </div>
+  </div>
+</section>

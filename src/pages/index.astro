@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import MotifTicker from '../components/MotifTicker.astro';
+import ScrollTransition from '../components/ScrollTransition.astro';
+import Problem from '../components/Problem.astro';
+import Services from '../components/Services.astro';
+import MessageToMoney from '../components/MessageToMoney.astro';
+import Industries from '../components/Industries.astro';
+import LiveDemo from '../components/LiveDemo.astro';
+import Gallery from '../components/Gallery.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import TechStack from '../components/TechStack.astro';
+import CaseStudies from '../components/CaseStudies.astro';
+import ROI from '../components/ROI.astro';
+import FAQ from '../components/FAQ.astro';
+import About from '../components/About.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+---
+
+<BaseLayout>
+  <Nav />
+  <main>
+    <Hero />
+    <MotifTicker />
+    <ScrollTransition />
+    <Problem />
+    <Services />
+    <MessageToMoney />
+    <Industries />
+    <LiveDemo />
+    <Gallery />
+    <HowItWorks />
+    <TechStack />
+    <CaseStudies />
+    <ROI />
+    <FAQ />
+    <About />
+    <FinalCTA />
+  </main>
+  <Footer />
+  <WhatsAppFloat />
+
+  <!-- sticky mobile CTA -->
+  <div id="sticky-cta" class="fixed bottom-3 left-3 right-3 z-40 translate-y-24 opacity-0 transition-all duration-500 md:hidden">
+    <a href="#book" class="flex items-center justify-center gap-2 rounded-2xl bg-[#241C13] px-5 py-3.5 font-semibold text-[#FAF7F1] shadow-[0_10px_40px_rgba(138,106,69,0.35)]">Build My AI System →</a>
+  </div>
+</BaseLayout>
+
+<script>
+      // @ts-nocheck
+  (() => {
+    const cta = document.getElementById('sticky-cta');
+    if (!cta) return;
+    const onScroll = () => {
+      const past = window.scrollY > window.innerHeight * 0.9;
+      const nearBook = (() => {
+        const book = document.getElementById('book');
+        if (!book) return false;
+        const r = book.getBoundingClientRect();
+        return r.top < window.innerHeight * 0.6;
+      })();
+      const show = past && !nearBook;
+      cta.style.transform = show ? 'translateY(0)' : 'translateY(6rem)';
+      cta.style.opacity = show ? '1' : '0';
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>

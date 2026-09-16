@@ -1,0 +1,26 @@
+---
+import SectionHeading from './SectionHeading.astro';
+---
+
+<section id="about" class="relative border-t border-[#201A14]/10 bg-[#EFE7D3] py-24 sm:py-32 overflow-hidden">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 grid gap-10 lg:grid-cols-[1fr_1fr] items-start">
+    <SectionHeading
+      eyebrow="About Amaze Matrix"
+      title="A new-generation AI company for local businesses."
+      copy="We're not a traditional software agency. We don't do 6-month projects and 40-page decks. We build working AI systems — chatbots, WhatsApp automation, booking and lead engines — that start handling real conversations in days."
+    />
+    <div class="space-y-3">
+      {[
+        ['Local-first', 'Dentists, salons, clinics, gyms, restaurants, real estate — appointment and lead-driven businesses are our home turf.'],
+        ['Systems, not gimmicks', 'No fake dashboards or robot mascots. Every workflow connects to your real calendar, CRM and WhatsApp.'],
+        ['Honest by default', 'No invented clients, no fake metrics. Placeholders stay placeholders until real, verified results exist.'],
+      ].map(([t, d], i) => (
+        <div class="reveal rounded-2xl border border-[#201A14]/10 bg-[#201A14]/[0.03] p-5" style={`--reveal-delay:${i*80}ms`}>
+          <p class="font-display font-semibold text-[#6E5334]">{t}</p>
+          <p class="mt-1.5 text-[14.5px] leading-relaxed text-[#201A14]/60">{d}</p>
+        </div>
+      ))}
+      <p class="reveal font-display text-lg text-[#201A14]/75 pt-2">Your customers are already asking questions. <span class="text-[#6E5334]">Let AI answer them.</span></p>
+    </div>
+  </div>
+</section>

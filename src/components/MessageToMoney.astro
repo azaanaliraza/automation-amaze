@@ -1,0 +1,114 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+const steps = [
+  'WhatsApp', 'AI', 'Intent Detection', 'Customer Lookup',
+  'Calendar', 'Availability', 'Booking', 'CRM',
+  'Confirmation', 'Follow-up',
+];
+---
+
+<section class="relative overflow-hidden border-t border-[#201A14]/10 bg-[#FAF7F1] py-24 sm:py-32">
+  <div class="animate-drift absolute right-[-160px] top-[-80px] size-[480px] rounded-full bg-[#8A6A45]/[0.06] blur-[110px]" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-6xl px-4 sm:px-6">
+    <SectionHeading align="center"
+      eyebrow="From message to money"
+      title="One message can trigger an entire workflow."
+      copy="Watch a single sentence move through your business — no receptionist required for the repetitive parts."
+    />
+
+    <div class="mx-auto mt-12 max-w-2xl">
+      <div class="reveal rounded-2xl rounded-tl-md border border-[#201A14]/10 bg-[#201A14]/[0.06] px-5 py-4 text-[16px] text-[#201A14]/90">
+        “Hi, I want to book an appointment.”
+      </div>
+
+      <div id="m2m" class="relative mt-6 rounded-2xl border border-[#201A14]/10 bg-white p-5 sm:p-7">
+        <div class="absolute left-[27px] sm:left-[31px] top-8 bottom-8 w-px bg-[#201A14]/10" aria-hidden="true"></div>
+        <div id="m2m-line" class="absolute left-[27px] sm:left-[31px] top-8 w-px bg-gradient-to-b from-[#8A6A45] to-[#DCC096] transition-all duration-500" style="height:0px" aria-hidden="true"></div>
+        <ol class="space-y-1.5">
+          {steps.map((s, i) => (
+            <li class="m2m-step relative flex items-center gap-4 rounded-xl px-1 py-2 opacity-35 transition-all duration-500" data-step={i}>
+              <span class="dot relative z-10 grid size-6 shrink-0 place-items-center rounded-full border border-[#201A14]/20 bg-[#EFE7D3] font-mono2 text-[10px] text-[#201A14]/50 transition-all duration-500">{i+1}</span>
+              <span class="flex flex-1 items-center justify-between gap-3">
+                <span class="font-display text-[16px] sm:text-lg font-medium tracking-tight step-label">{s}</span>
+                <span class="step-state font-mono2 text-[10px] uppercase tracking-[0.18em] text-[#201A14]/30">waiting</span>
+              </span>
+            </li>
+          ))}
+        </ol>
+        <div id="m2m-done" class="mt-5 rounded-xl border border-[#8A6A45]/30 bg-[#8A6A45]/[0.07] px-4 py-3.5 text-center opacity-0 translate-y-2 transition-all duration-700">
+          <p class="font-display font-semibold text-[#6E5334]">Appointment confirmed · CRM updated · follow-up scheduled</p>
+          <p class="mt-1 text-[13px] text-[#201A14]/55">No receptionist required for the repetitive parts. Your team steps in where humans matter most.</p>
+        </div>
+      </div>
+      <p class="mt-4 text-center font-mono2 text-[11px] uppercase tracking-[0.18em] text-[#201A14]/30">Scroll to run the workflow ↓</p>
+    </div>
+  </div>
+</section>
+
+<script>
+      // @ts-nocheck
+  (() => {
+    const wrap = document.getElementById('m2m');
+    if (!wrap) return;
+    const steps = Array.from(wrap.querySelectorAll('.m2m-step'));
+    const line = document.getElementById('m2m-line');
+    const done = document.getElementById('m2m-done');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const setActive = (n) => {
+      steps.forEach((el, i) => {
+        const dot = el.querySelector('.dot');
+        const state = el.querySelector('.step-state');
+        if (i < n) {
+          el.style.opacity = '1';
+          dot.style.cssText = 'background:#241C13;border-color:#241C13;color:#FAF7F1;font-weight:700';
+          dot.textContent = '✓';
+          state.textContent = 'done';
+          state.style.color = 'rgba(138,106,69,0.8)';
+        } else if (i === n) {
+          el.style.opacity = '1';
+          el.style.background = 'rgba(138,106,69,0.06)';
+          dot.style.cssText = 'background:transparent;border-color:#8A6A45;color:#6E5334;box-shadow:0 0 0 6px rgba(138,106,69,0.12)';
+          dot.textContent = String(i + 1);
+          state.textContent = 'running…';
+          state.style.color = '#6E5334';
+        } else {
+          el.style.opacity = '0.35';
+          el.style.background = 'transparent';
+          dot.style.cssText = '';
+          dot.textContent = String(i + 1);
+          state.textContent = 'waiting';
+          state.style.color = '';
+        }
+      });
+      if (line) {
+        const first = steps[0]?.offsetTop ?? 0;
+        const target = steps[Math.min(n, steps.length - 1)];
+        line.style.height = target ? `${target.offsetTop - first + 12}px` : '0px';
+      }
+      if (done) {
+        const finished = n >= steps.length;
+        done.style.opacity = finished ? '1' : '0';
+        done.style.transform = finished ? 'translateY(0)' : 'translateY(8px)';
+      }
+    };
+
+    if (reduce) { setActive(steps.length); return; }
+
+    let progress = 0;
+    let raf = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const r = wrap.getBoundingClientRect();
+        const vh = window.innerHeight;
+        const p = Math.min(1, Math.max(0, (vh * 0.75 - r.top) / (r.height * 0.9)));
+        const n = Math.round(p * steps.length);
+        if (n !== progress) { progress = n; setActive(n); }
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
