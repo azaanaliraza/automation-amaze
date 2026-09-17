@@ -84,10 +84,10 @@ export default function LiveDemoChat() {
 
   return (
     <div className="overflow-hidden rounded-2xl border border-[#201A14]/10 bg-white">
-      <div className="flex flex-wrap gap-2 border-b border-[#201A14]/10 p-3" role="tablist" aria-label="Choose your business">
+      <div className="no-scrollbar flex gap-2 overflow-x-auto border-b border-[#201A14]/10 p-3 sm:flex-wrap" role="tablist" aria-label="Choose your business">
         {BIZ.map((b) => (
           <button key={b.id} role="tab" aria-selected={b.id === biz.id} onClick={() => reset(b)}
-            className={`rounded-full px-3.5 py-1.5 text-[13px] font-medium transition ${b.id === biz.id ? 'bg-[#241C13] text-[#FAF7F1]' : 'border border-[#201A14]/12 text-[#201A14]/60 hover:text-[#201A14] hover:border-[#201A14]/30'}`}>
+            className={`shrink-0 rounded-full px-3.5 py-2 text-[13px] font-medium transition ${b.id === biz.id ? 'bg-[#241C13] text-[#FAF7F1]' : 'border border-[#201A14]/12 text-[#201A14]/60 hover:text-[#201A14] hover:border-[#201A14]/30'}`}>
             {b.label}
           </button>
         ))}
@@ -134,10 +134,10 @@ export default function LiveDemoChat() {
       </div>
 
       <div className="flex items-center gap-2 border-t border-[#201A14]/10 p-3">
-        <button onClick={() => reset(biz)} className="grid size-10 shrink-0 place-items-center rounded-full border border-[#201A14]/10 text-[#201A14]/50 hover:text-[#201A14]" aria-label="Restart demo"><RotateCcw size={15} /></button>
+        <button onClick={() => reset(biz)} className="grid size-11 shrink-0 place-items-center rounded-full border border-[#201A14]/10 text-[#201A14]/50 hover:text-[#201A14]" aria-label="Restart demo"><RotateCcw size={15} /></button>
         <input value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && sendFree()}
-          placeholder="Type a message…" className="h-10 flex-1 rounded-full border border-[#201A14]/10 bg-[#201A14]/[0.04] px-4 text-[14px] outline-none placeholder:text-[#201A14]/30 focus:border-[#8A6A45]/50" aria-label="Type a message" />
-        <button onClick={sendFree} className="grid size-10 shrink-0 place-items-center rounded-full bg-[#241C13] text-[#FAF7F1]" aria-label="Send"><Send size={15} /></button>
+          placeholder="Type a message…" className="h-11 flex-1 rounded-full border border-[#201A14]/10 bg-[#201A14]/[0.04] px-4 text-[16px] sm:text-[14px] outline-none placeholder:text-[#201A14]/30 focus:border-[#8A6A45]/50" aria-label="Type a message" />
+        <button onClick={sendFree} className="grid size-11 shrink-0 place-items-center rounded-full bg-[#241C13] text-[#FAF7F1]" aria-label="Send"><Send size={15} /></button>
       </div>
       <p className="border-t border-[#201A14]/[0.06] px-4 py-2 font-mono2 text-[10px] uppercase tracking-[0.16em] text-[#201A14]/30">Interactive demo with example responses — your live system uses your real business data</p>
     </div>

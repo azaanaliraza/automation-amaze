@@ -20,6 +20,21 @@
 
 html {
   scroll-behavior: auto;
+  scroll-padding-top: 88px;
+  overflow-x: clip;
+}
+
+section[id] {
+  scroll-margin-top: 72px;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2 {
+  text-wrap: balance;
 }
 
 html.lenis, html.lenis body { height: auto; }
@@ -32,6 +47,36 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
+  overflow-wrap: break-word;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* hide scrollbars on horizontal scrollers (gallery, tab rows) */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+input[type="range"] { cursor: pointer; }
+
+/* ---------- mobile foundation ---------- */
+@media (max-width: 639px) {
+  /* calmer vertical rhythm on small screens (unlayered beats utilities) */
+  .py-24 { padding-top: 4rem; padding-bottom: 4rem; }
+  .py-28 { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+
+  /* prevent iOS Safari auto-zoom on focus (needs >= 16px) */
+  input, textarea, select { font-size: 16px; }
+
+  /* fat-finger friendly sliders */
+  input[type="range"] { height: 44px; }
+  input[type="range"]::-webkit-slider-thumb { width: 28px; height: 28px; }
+  input[type="range"]::-moz-range-thumb { width: 28px; height: 28px; border: none; }
+
+  /* save battery / reduce jank on phones */
+  .animate-drift { animation: none; }
 }
 
 ::selection { background: #241c13; color: #faf7f1; }

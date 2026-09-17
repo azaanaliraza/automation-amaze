@@ -115,7 +115,7 @@ export default function HeroEngine() {
           <span className="size-2.5 rounded-full bg-[#febc2e]" />
           <span className="size-2.5 rounded-full bg-[#28c840]" />
         </div>
-        <p className="font-mono2 text-[10px] uppercase tracking-[0.2em] text-[#201A14]/40">business operating system</p>
+        <p className="hidden min-[420px]:block font-mono2 text-[10px] uppercase tracking-[0.2em] text-[#201A14]/40">business operating system</p>
         <p className="flex items-center gap-1.5 font-mono2 text-[10px] uppercase tracking-[0.2em] text-[#6E5334]">
           <span className="relative flex size-2"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#241C13] opacity-60" /><span className="relative inline-flex size-2 rounded-full bg-[#241C13]" /></span>
           Live
@@ -124,7 +124,7 @@ export default function HeroEngine() {
 
       <div className="grid gap-0 sm:grid-cols-[1fr_210px]">
         {/* conversation */}
-        <div className="p-4 sm:p-5 min-h-[340px]">
+        <div className="p-4 sm:p-5 min-h-[300px] sm:min-h-[340px]">
           <div className="mb-3 flex items-center gap-2">
             <span key={s.id} className="chat-in rounded-full border border-[#8A6A45]/30 bg-[#8A6A45]/10 px-2.5 py-1 font-mono2 text-[10px] uppercase tracking-[0.16em] text-[#6E5334]">{s.tag} · {s.channel}</span>
             <span className="font-mono2 text-[10px] text-[#201A14]/30">{s.business}</span>
@@ -193,8 +193,10 @@ export default function HeroEngine() {
                 aria-selected={i === idx % SCENARIOS.length}
                 aria-label={sc.business}
                 onClick={() => setIdx(i)}
-                className={`h-1 flex-1 rounded-full transition-all ${i === idx % SCENARIOS.length ? 'bg-[#241C13]' : 'bg-[#201A14]/15 hover:bg-[#201A14]/30'}`}
-              />
+                className="flex h-7 flex-1 items-center"
+              >
+                <span className={`h-1 w-full rounded-full transition-all ${i === idx % SCENARIOS.length ? 'bg-[#241C13]' : 'bg-[#201A14]/15 hover:bg-[#201A14]/30'}`} />
+              </button>
             ))}
           </div>
         </div>

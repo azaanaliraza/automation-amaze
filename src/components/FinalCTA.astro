@@ -7,13 +7,13 @@ import { WHATSAPP_URL } from '../lib/site.ts';
   <div class="animate-drift absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 size-[560px] rounded-full bg-[#8A6A45]/[0.08] blur-[130px]" aria-hidden="true"></div>
 
   <div class="relative mx-auto max-w-4xl px-4 sm:px-6 text-center">
-    <div id="final-cycle" class="mx-auto mb-10 flex max-w-md items-center justify-center gap-1.5 font-mono2 text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-[#201A14]/35" aria-hidden="true">
+    <div id="final-cycle" class="mx-auto mb-10 flex max-w-md flex-wrap items-center justify-center gap-1.5 px-2 font-mono2 text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-[#201A14]/35" aria-hidden="true">
       {['WhatsApp','AI','CRM','Calendar','Customer','Business'].map((s, i) => (
         <span class="flex items-center gap-1.5"><span class="cycle-word transition-colors duration-500">{s}</span>{i < 5 && <span class="text-[#6E5334]/50">↓</span>}</span>
       ))}
     </div>
 
-    <h2 data-split class="font-display font-semibold tracking-[-0.035em] leading-[1.0] text-[clamp(2.5rem,7vw,5rem)]">
+    <h2 data-split class="font-display font-semibold tracking-[-0.035em] leading-[1.0] text-[clamp(2.3rem,9vw,5rem)]">
       Stop doing manually what software can do automatically.
     </h2>
     <p class="reveal mx-auto mt-6 max-w-xl text-[16px] sm:text-lg text-[#201A14]/60">Tell us what your business does. We'll show you what can be automated — in a free automation audit.</p>

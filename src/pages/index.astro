@@ -45,8 +45,8 @@ import WhatsAppFloat from '../components/WhatsAppFloat.astro';
   <WhatsAppFloat />
 
   <!-- sticky mobile CTA -->
-  <div id="sticky-cta" class="fixed bottom-3 left-3 right-3 z-40 translate-y-24 opacity-0 transition-all duration-500 md:hidden">
-    <a href="#book" class="flex items-center justify-center gap-2 rounded-2xl bg-[#241C13] px-5 py-3.5 font-semibold text-[#FAF7F1] shadow-[0_10px_40px_rgba(138,106,69,0.35)]">Build My AI System →</a>
+  <div id="sticky-cta" class="pointer-events-none fixed bottom-[calc(0.75rem+env(safe-area-inset-bottom))] left-3 right-3 z-40 translate-y-24 opacity-0 transition-all duration-500 md:hidden">
+    <a href="#book" class="flex min-h-[52px] items-center justify-center gap-2 rounded-2xl bg-[#241C13] px-5 py-3.5 font-semibold text-[#FAF7F1] shadow-[0_10px_40px_rgba(138,106,69,0.35)]">Build My AI System →</a>
   </div>
 </BaseLayout>
 
@@ -66,6 +66,7 @@ import WhatsAppFloat from '../components/WhatsAppFloat.astro';
       const show = past && !nearBook;
       cta.style.transform = show ? 'translateY(0)' : 'translateY(6rem)';
       cta.style.opacity = show ? '1' : '0';
+      cta.style.pointerEvents = show ? 'auto' : 'none';
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();

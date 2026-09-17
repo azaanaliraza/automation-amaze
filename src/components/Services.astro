@@ -40,8 +40,8 @@ const services = [
           <span class="flex items-center gap-1.5 font-mono2 text-[10px] uppercase tracking-widest text-[#6E5334]"><span class="size-1.5 rounded-full bg-[#241C13] animate-pulse"></span>Running</span>
         </div>
         <div class="relative">
-          <div class="absolute left-[22px] top-2 bottom-2 w-px bg-[#201A14]/10" aria-hidden="true"></div>
-          <div id="builder-line" class="absolute left-[22px] top-2 w-px bg-[#241C13] transition-all duration-500" style="height:0%" aria-hidden="true"></div>
+          <div class="absolute left-[42px] sm:left-[46px] top-2 bottom-2 w-px bg-[#201A14]/10" aria-hidden="true"></div>
+          <div id="builder-line" class="absolute left-[42px] sm:left-[46px] top-2 w-px bg-[#241C13] transition-all duration-500" style="height:0%" aria-hidden="true"></div>
           <div class="space-y-2.5">
             {nodes.map((n, i) => (
               <div class="builder-node relative flex items-center gap-3.5 opacity-30 transition-all duration-500" data-node={i}>

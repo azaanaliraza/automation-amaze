@@ -20,7 +20,7 @@ const steps = [
       <div class="space-y-6">
         {steps.map((s, i) => (
           <div class:list={["how-step reveal relative grid gap-4 sm:grid-cols-2 sm:gap-12 items-start", i % 1 === 0 && ""]}>
-            <div class="flex gap-5 sm:justify-end sm:text-right sm:pr-4 pl-14 sm:pl-0">
+            <div class="flex gap-5 sm:justify-end sm:text-right sm:pr-4 sm:pl-0">
               <div class:list={["sm:order-2 relative z-10 grid size-14 shrink-0 place-items-center rounded-2xl font-display font-bold text-lg", "bg-[#241C13] text-[#E3C99B]"]}>{s.n}</div>
               <div class="sm:order-1">
                 <h3 class="font-display text-[clamp(1.6rem,3.5vw,2.5rem)] font-semibold tracking-tight leading-none">{s.t}</h3>

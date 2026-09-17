@@ -34,7 +34,7 @@ export default function IndustriesExplorer() {
               role="tab"
               aria-selected={on}
               onClick={() => setActive(ind)}
-              className={`rounded-full border px-4 py-2 font-display text-[15px] font-medium tracking-tight transition-all duration-300 ${
+              className={`min-h-[44px] rounded-full border px-4 py-2.5 font-display text-[15px] font-medium tracking-tight transition-all duration-300 ${
                 on
                   ? 'border-[#8A6A45] bg-[#241C13] text-[#FAF7F1]'
                   : 'border-[#201A14]/12 bg-[#201A14]/[0.03] text-[#201A14]/65 hover:border-[#201A14]/30 hover:text-[#201A14]'
@@ -47,7 +47,7 @@ export default function IndustriesExplorer() {
         <p className="mt-3 w-full text-[14px] text-[#201A14]/45">If your customers message you, we can automate it.</p>
       </div>
 
-      <div key={active.id} className="rounded-2xl border border-[#201A14]/10 bg-white p-6 sm:p-7">
+      <div key={active.id} className="rounded-2xl border border-[#201A14]/10 bg-white p-5 sm:p-7">
         <p className="font-mono2 text-[11px] uppercase tracking-[0.2em] text-[#6E5334]">{active.label} · example workflow</p>
         <p className="chat-in mt-4 max-w-md rounded-2xl rounded-tl-md border border-[#201A14]/10 bg-[#201A14]/[0.06] px-4 py-3 text-[15px]">{active.example}</p>
         <p className="chat-in mt-2 max-w-md rounded-2xl rounded-tr-md border border-[#8A6A45]/25 bg-[#8A6A45]/[0.07] px-4 py-3 text-[14px] text-[#201A14]/85" style={{ animationDelay: '150ms' }}>{active.reply}</p>

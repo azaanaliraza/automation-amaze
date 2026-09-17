@@ -39,7 +39,7 @@ export default function ROICalculator() {
 function Slider({ label, value, min, max, step, display, onChange }: { label: string; value: number; min: number; max: number; step: number; display: string; onChange: (v: number) => void }) {
   return (
     <label className="block">
-      <span className="mb-2 flex items-center justify-between text-[14px]"><span className="text-[#201A14]/70">{label}</span><span className="font-display font-semibold text-[#6E5334]">{display}</span></span>
+      <span className="mb-2 flex items-center justify-between gap-3 text-left text-[14px]"><span className="text-[#201A14]/70">{label}</span><span className="shrink-0 text-right font-display font-semibold text-[#6E5334]">{display}</span></span>
       <input type="range" min={min} max={max} step={step} value={value} onChange={(e) => onChange(Number(e.target.value))}
         className="w-full accent-[#8A6A45]" aria-label={label} />
     </label>
@@ -49,7 +49,7 @@ function Slider({ label, value, min, max, step, display, onChange }: { label: st
 function Stat({ label, value, highlight }: { label: string; value: string; highlight?: boolean }) {
   return (
     <div className={`rounded-xl border p-4 ${highlight ? 'border-[#8A6A45]/40 bg-[#8A6A45]/[0.07]' : 'border-[#201A14]/10 bg-[#201A14]/[0.03]'}`}>
-      <p className={`font-display text-2xl font-semibold tracking-tight ${highlight ? 'text-[#6E5334]' : 'text-[#201A14]'}`}>{value}</p>
+      <p className={`font-display break-words text-xl sm:text-2xl font-semibold tracking-tight ${highlight ? 'text-[#6E5334]' : 'text-[#201A14]'}`}>{value}</p>
       <p className="mt-1 font-mono2 text-[10px] uppercase tracking-[0.16em] text-[#201A14]/40">{label}</p>
     </div>
   );

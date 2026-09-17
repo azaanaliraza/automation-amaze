@@ -18,23 +18,24 @@
       </div>
       <div class="flex items-center gap-2">
         <a href="#demo" class="hidden sm:inline-flex text-[14px] text-[#201A14]/70 hover:text-[#201A14] px-3 py-2 transition">Live demo</a>
-        <a href="#book" data-magnetic class="btn-tactile inline-flex items-center gap-1.5 rounded-full bg-[#241C13] text-[#FAF7F1] text-[14px] font-semibold pl-5 pr-4 py-2.5 hover:bg-[#372B1A] hover:shadow-[0_0_32px_rgba(138,106,69,0.35)]">
+        <a href="#book" data-magnetic class="btn-tactile inline-flex min-h-[44px] items-center gap-1.5 rounded-full bg-[#241C13] text-[#FAF7F1] text-[14px] font-semibold pl-5 pr-4 py-2.5 hover:bg-[#372B1A] hover:shadow-[0_0_32px_rgba(138,106,69,0.35)]">
           Book a Demo
           <span class="arr" aria-hidden="true">→</span>
         </a>
-        <button id="menu-btn" class="lg:hidden grid size-10 place-items-center rounded-full border border-[#201A14]/10 text-[#201A14]/80" aria-label="Open menu" aria-expanded="false">
+        <button id="menu-btn" class="lg:hidden grid size-11 place-items-center rounded-full border border-[#201A14]/10 text-[#201A14]/80" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 5h14M2 9h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </button>
       </div>
     </nav>
   </div>
-  <div id="mobile-menu" class="lg:hidden hidden mx-4 mb-3 rounded-2xl border border-[#201A14]/10 bg-white/95 backdrop-blur-xl p-3">
-    <a href="#systems" class="block px-4 py-3 rounded-xl hover:bg-[#201A14]/5 text-[#201A14]/85">Solutions</a>
-    <a href="#how" class="block px-4 py-3 rounded-xl hover:bg-[#201A14]/5 text-[#201A14]/85">How It Works</a>
-    <a href="#industries" class="block px-4 py-3 rounded-xl hover:bg-[#201A14]/5 text-[#201A14]/85">Industries</a>
-    <a href="#work" class="block px-4 py-3 rounded-xl hover:bg-[#201A14]/5 text-[#201A14]/85">Results</a>
-    <a href="#about" class="block px-4 py-3 rounded-xl hover:bg-[#201A14]/5 text-[#201A14]/85">About</a>
-    <a href="#demo" class="block px-4 py-3 rounded-xl text-[#6E5334] font-medium">Try the live demo →</a>
+  <div id="mobile-menu" class="lg:hidden hidden mx-4 mb-3 max-h-[70dvh] overflow-y-auto rounded-2xl border border-[#201A14]/10 bg-white/95 backdrop-blur-xl p-3">
+    <a href="#systems" class="block px-4 py-3.5 rounded-xl hover:bg-[#201A14]/5 text-[#201A14]/85">Solutions</a>
+    <a href="#how" class="block px-4 py-3.5 rounded-xl hover:bg-[#201A14]/5 text-[#201A14]/85">How It Works</a>
+    <a href="#industries" class="block px-4 py-3.5 rounded-xl hover:bg-[#201A14]/5 text-[#201A14]/85">Industries</a>
+    <a href="#work" class="block px-4 py-3.5 rounded-xl hover:bg-[#201A14]/5 text-[#201A14]/85">Results</a>
+    <a href="#about" class="block px-4 py-3.5 rounded-xl hover:bg-[#201A14]/5 text-[#201A14]/85">About</a>
+    <a href="#demo" class="block px-4 py-3.5 rounded-xl text-[#6E5334] font-medium">Try the live demo →</a>
+    <a href="#book" class="mt-1 flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-[#241C13] px-4 py-3 font-semibold text-[#FAF7F1]">Book a Demo →</a>
   </div>
 </header>
 
@@ -44,10 +45,16 @@
     const btn = document.getElementById('menu-btn');
     const menu = document.getElementById('mobile-menu');
     if (!btn || !menu) return;
-    btn.addEventListener('click', () => {
-      const open = menu.classList.toggle('hidden');
-      btn.setAttribute('aria-expanded', String(!open));
-    });
-    menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => menu.classList.add('hidden')));
+    const iconOpen = '<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 5h14M2 9h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
+    const iconClose = '<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 4l10 10M14 4L4 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
+    const setOpen = (open) => {
+      menu.classList.toggle('hidden', !open);
+      btn.setAttribute('aria-expanded', String(open));
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      btn.innerHTML = open ? iconClose : iconOpen;
+    };
+    btn.addEventListener('click', () => setOpen(menu.classList.contains('hidden')));
+    menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
   })();
 </script>
