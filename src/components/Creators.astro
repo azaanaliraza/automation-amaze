@@ -1,0 +1,72 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+const steps = [
+  { n: '01', t: 'Offer', d: 'We package your knowledge into an offer people want — promise, curriculum, pricing, bonuses.' },
+  { n: '02', t: 'Funnel', d: 'Landing pages, checkout, upsells and email sequences — built and wired to your payments.' },
+  { n: '03', t: 'Content engine', d: 'One long video becomes a week of shorts, posts and stories that sell while you sleep.' },
+  { n: '04', t: 'Launch & scale', d: 'DM and WhatsApp automation qualifies buyers, handles objections and closes — then we launch every month.' },
+];
+
+const yours = ['Record the lessons — 2–3 hrs a week', 'Show up for one live Q&A', 'Just be the expert'];
+const ours = ['Offer, pricing & positioning', 'Funnel, pages & checkout', 'Content repurposing engine', 'DM + WhatsApp sales automation', 'Email list & monthly launches', 'Objection handling & follow-up'];
+---
+
+<section id="creators" class="section-bone relative py-24 sm:py-32 overflow-hidden">
+  <div class="grid-lines-dark absolute inset-0 opacity-60" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6">
+    <SectionHeading dark={false}
+      eyebrow="Creator growth engine"
+      title="You teach. We sell."
+      copy="A done-for-you growth system for creators selling courses. You record the lessons — we build the offer, the funnel, the content engine and the automation that turns followers into students."
+    />
+
+    <div class="mt-12 grid gap-5 lg:grid-cols-2">
+      <!-- your side -->
+      <div class="reveal rounded-2xl border border-[#241C13]/10 bg-white/60 p-6 sm:p-8">
+        <p class="font-mono2 text-[11px] uppercase tracking-[0.2em] text-[#201A14]/40">Your side · ~3 hrs a week</p>
+        <h3 class="mt-3 font-display text-2xl font-semibold tracking-tight">Just teach.</h3>
+        <ul class="mt-5 space-y-3">
+          {yours.map((y) => (
+            <li class="flex items-start gap-3 text-[15px] text-[#241C13]/75">
+              <span class="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-[#241C13] text-[13px] font-bold text-[#FAF7F1]">✓</span>
+              {y}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <!-- our side -->
+      <div class="reveal rounded-2xl bg-[#241C13] p-6 sm:p-8 text-[#F6F0E4]" style="--reveal-delay:120ms">
+        <p class="font-mono2 text-[11px] uppercase tracking-[0.2em] text-[#F6F0E4]/50">Our side · everything else</p>
+        <h3 class="mt-3 font-display text-2xl font-semibold tracking-tight">We handle the selling.</h3>
+        <ul class="mt-5 space-y-3">
+          {ours.map((o) => (
+            <li class="flex items-start gap-3 text-[15px] text-[#F6F0E4]/80">
+              <span class="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-[#DCC096] text-[13px] font-bold text-[#241C13]">✓</span>
+              {o}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- how it runs -->
+    <div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      {steps.map((s, i) => (
+        <div class="reveal rounded-2xl border border-[#241C13]/10 bg-white/60 p-5" style={`--reveal-delay:${i*60}ms`}>
+          <p class="font-display font-bold text-lg text-[#8A6A45]">{s.n}</p>
+          <h3 class="mt-1.5 font-display font-semibold tracking-tight text-[17px]">{s.t}</h3>
+          <p class="mt-1.5 text-[14px] leading-relaxed text-[#241C13]/60">{s.d}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="reveal mt-8 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-5 rounded-2xl border border-[#8A6A45]/25 bg-gradient-to-b from-[#8A6A45]/[0.07] to-transparent p-6 sm:p-7">
+      <p class="font-display text-lg font-medium tracking-tight max-w-2xl">Already posting content with an audience asking for more — but no course yet, or one that isn't selling? <span class="text-[#6E5334]">That's exactly who this is for.</span></p>
+      <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+        <a href="#book" data-magnetic class="btn-tactile inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-[#241C13] px-7 py-3 sm:py-3.5 font-semibold text-[#FAF7F1] hover:bg-[#372B1A]">Scale My Course <span class="arr" aria-hidden="true">→</span></a>
+        <a href="#demo" class="btn-tactile inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-[#201A14]/15 px-7 py-3 sm:py-3.5 text-[#201A14]/85 hover:border-[#201A14]/35">See the system</a>
+      </div>
+    </div>
+  </div>
+</section>

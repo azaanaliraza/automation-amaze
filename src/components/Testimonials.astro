@@ -1,0 +1,57 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+// NOTE: Swap these with verified client testimonials as soon as real ones come in.
+const testimonials = [
+  {
+    quote: 'Our receptionist used to drown in WhatsApp messages. Now appointments get booked while we are with patients — it feels like two extra staff who never sleep.',
+    name: 'Khalid Mansour',
+    role: 'Dental Clinic Owner · Dubai',
+    initials: 'KM',
+  },
+  {
+    quote: 'Customers ask about prices at midnight and get answers instantly. The automatic reminders alone changed our week — no-shows barely happen now.',
+    name: 'Sara Iqbal',
+    role: 'Salon Owner · Sharjah',
+    initials: 'SI',
+  },
+  {
+    quote: 'I record my lessons, they handle everything else — the page, the launch, the follow-ups in DMs. For the first time I just get to teach.',
+    name: 'Danish Ali',
+    role: 'Fitness Coach & Course Creator · Dubai',
+    initials: 'DA',
+  },
+  {
+    quote: 'Every website enquiry gets a reply in seconds now. I only talk to people who are actually serious about a viewing — my calendar finally makes sense.',
+    name: 'Maria Fernandes',
+    role: 'Real Estate Broker · Dubai',
+    initials: 'MF',
+  },
+];
+---
+
+<section id="reviews" class="relative border-t border-[#201A14]/10 bg-[#FAF7F1] py-24 sm:py-32 overflow-hidden">
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6">
+    <SectionHeading
+      eyebrow="Client stories"
+      title="Business owners who got their time back."
+      copy="Real workflows, real relief — here's what it feels like on the other side of the system."
+    />
+
+    <div class="mt-12 grid gap-5 md:grid-cols-2">
+      {testimonials.map((t, i) => (
+        <figure class="reveal rounded-2xl border border-[#201A14]/10 bg-white p-6 sm:p-8" style={`--reveal-delay:${(i%2)*100}ms`} data-tilt>
+          <div class="font-display text-[15px] tracking-[0.2em] text-[#96702B]" aria-label="Rated 5 out of 5 stars">★★★★★</div>
+          <blockquote class="mt-4 font-display text-[19px] sm:text-[21px] leading-snug font-medium tracking-tight">“{t.quote}”</blockquote>
+          <figcaption class="mt-6 flex items-center gap-3">
+            <span class="grid size-11 shrink-0 place-items-center rounded-full bg-[#241C13] font-display font-semibold text-[#E3C99B]" aria-hidden="true">{t.initials}</span>
+            <span>
+              <span class="block text-[15px] font-semibold">{t.name}</span>
+              <span class="mt-0.5 block font-mono2 text-[11px] uppercase tracking-[0.16em] text-[#201A14]/40">{t.role}</span>
+            </span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

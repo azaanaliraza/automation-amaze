@@ -92,13 +92,14 @@ const site = 'https://amazematrix.agency';
           const lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
           const raf = (t) => { lenis.raf(t); requestAnimationFrame(raf); };
           requestAnimationFrame(raf);
-          document.querySelectorAll('a[href^="#"]').forEach((a) => {
-            a.addEventListener('click', (e) => {
-              const id = a.getAttribute('href');
-              if (!id || id === '#') return;
-              const el = document.querySelector(id);
-              if (el) { e.preventDefault(); lenis.scrollTo(el, { offset: -80 }); }
-            });
+          // delegated so anchors inside late-hydrating React islands work too
+          document.addEventListener('click', (e) => {
+            const a = e.target.closest?.('a[href^="#"]');
+            if (!a) return;
+            const id = a.getAttribute('href');
+            if (!id || id === '#') return;
+            const el = document.querySelector(id);
+            if (el) { e.preventDefault(); lenis.scrollTo(el, { offset: -80 }); }
           });
           // @ts-ignore
           window.__lenis = lenis;
