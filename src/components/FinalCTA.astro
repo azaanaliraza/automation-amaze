@@ -2,35 +2,35 @@
 import { WHATSAPP_URL } from '../lib/site.ts';
 ---
 
-<section id="book" class="noise relative overflow-hidden border-t border-[#201A14]/10 bg-[#FAF7F1] py-28 sm:py-40">
+<section id="contact" class="noise relative overflow-hidden border-t border-[#201A14]/10 bg-[#FAF7F1] py-28 sm:py-40">
   <div class="grid-lines absolute inset-0" aria-hidden="true"></div>
   <div class="animate-drift absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 size-[560px] rounded-full bg-[#8A6A45]/[0.08] blur-[130px]" aria-hidden="true"></div>
 
   <div class="relative mx-auto max-w-4xl px-4 sm:px-6 text-center">
     <div id="final-cycle" class="mx-auto mb-10 flex max-w-md flex-wrap items-center justify-center gap-1.5 px-2 font-mono2 text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-[#201A14]/35" aria-hidden="true">
-      {['WhatsApp','AI','CRM','Calendar','Customer','Business'].map((s, i) => (
+      {['Search','Click','Enquire','Book','Return','Refer'].map((s, i) => (
         <span class="flex items-center gap-1.5"><span class="cycle-word transition-colors duration-500">{s}</span>{i < 5 && <span class="text-[#6E5334]/50">↓</span>}</span>
       ))}
     </div>
 
     <h2 data-split class="font-display font-semibold tracking-[-0.035em] leading-[1.0] text-[clamp(2.3rem,9vw,5rem)]">
-      Stop doing manually what software can do automatically.
+      Your next patient is searching right now.
     </h2>
-    <p class="reveal mx-auto mt-6 max-w-xl text-[16px] sm:text-lg text-[#201A14]/60">Tell us what your business does. We'll show you what can be automated — in a free automation audit.</p>
+    <p class="reveal mx-auto mt-6 max-w-xl text-[16px] sm:text-lg text-[#201A14]/60">Tell us about your clinic. We'll show you exactly how to get in front of more of the right patients — in a free growth audit.</p>
 
     <form id="audit-form" class="reveal mx-auto mt-9 grid max-w-xl gap-2.5 text-left" style="--reveal-delay:120ms">
       <div class="grid sm:grid-cols-2 gap-2.5">
         <input required placeholder="Your name" aria-label="Your name" class="h-12 rounded-xl border border-[#201A14]/12 bg-[#201A14]/[0.04] px-4 text-[15px] outline-none placeholder:text-[#201A14]/30 focus:border-[#8A6A45]/60" />
-        <input required placeholder="Business type (e.g. dental clinic)" aria-label="Business type" class="h-12 rounded-xl border border-[#201A14]/12 bg-[#201A14]/[0.04] px-4 text-[15px] outline-none placeholder:text-[#201A14]/30 focus:border-[#8A6A45]/60" />
+        <input required placeholder="Clinic type (e.g. IVF centre)" aria-label="Clinic type" class="h-12 rounded-xl border border-[#201A14]/12 bg-[#201A14]/[0.04] px-4 text-[15px] outline-none placeholder:text-[#201A14]/30 focus:border-[#8A6A45]/60" />
       </div>
       <input required type="tel" placeholder="WhatsApp number" aria-label="WhatsApp number" class="h-12 rounded-xl border border-[#201A14]/12 bg-[#201A14]/[0.04] px-4 text-[15px] outline-none placeholder:text-[#201A14]/30 focus:border-[#8A6A45]/60" />
-      <textarea rows="3" placeholder="What eats most of your team's time? (e.g. answering price questions on WhatsApp)" aria-label="Biggest time drain" class="rounded-xl border border-[#201A14]/12 bg-[#201A14]/[0.04] px-4 py-3.5 text-[15px] outline-none placeholder:text-[#201A14]/30 focus:border-[#8A6A45]/60 resize-none"></textarea>
+      <textarea rows="3" placeholder="What's limiting your clinic's growth? (e.g. quiet weeks, low consultation bookings)" aria-label="Biggest growth challenge" class="rounded-xl border border-[#201A14]/12 bg-[#201A14]/[0.04] px-4 py-3.5 text-[15px] outline-none placeholder:text-[#201A14]/30 focus:border-[#8A6A45]/60 resize-none"></textarea>
       <div class="grid sm:grid-cols-2 gap-2.5 pt-1">
-        <button type="submit" data-magnetic class="btn-tactile inline-flex items-center justify-center gap-2 rounded-full bg-[#241C13] px-6 py-3 font-semibold text-[#FAF7F1] hover:bg-[#372B1A]">Book a Free Automation Audit <span class="arr">→</span></button>
+        <button type="submit" data-magnetic class="btn-tactile inline-flex items-center justify-center gap-2 rounded-full bg-[#241C13] px-6 py-3 font-semibold text-[#FAF7F1] hover:bg-[#372B1A]">Book a Free Growth Audit <span class="arr">→</span></button>
         <a href={WHATSAPP_URL} target="_blank" rel="noopener" class="btn-tactile inline-flex items-center justify-center gap-2 rounded-full border border-[#201A14]/15 px-6 py-3 text-[#201A14]/85 hover:border-[#201A14]/35">Talk to Us on WhatsApp</a>
       </div>
       <p id="audit-ok" class="hidden rounded-xl border border-[#8A6A45]/30 bg-[#8A6A45]/10 px-4 py-3 text-center text-[14px] text-[#6E5334]">Received — we'll be in touch within one business day. (Demo form — wire to your CRM.)</p>
-      <p class="text-center font-mono2 text-[10px] uppercase tracking-[0.16em] text-[#201A14]/25">No pressure · no jargon · mapped to your business</p>
+      <p class="text-center font-mono2 text-[10px] uppercase tracking-[0.16em] text-[#201A14]/25">No pressure · no jargon · tailored to your clinic</p>
     </form>
   </div>
 </section>

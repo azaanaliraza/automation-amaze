@@ -1,26 +1,46 @@
 ---
 import SectionHeading from './SectionHeading.astro';
+import { FOUNDERS } from '../lib/site.ts';
+
+const founders = [FOUNDERS.azaan, FOUNDERS.areeb];
 ---
 
 <section id="about" class="relative border-t border-[#201A14]/10 bg-[#EFE7D3] py-24 sm:py-32 overflow-hidden">
-  <div class="mx-auto max-w-6xl px-4 sm:px-6 grid gap-10 lg:grid-cols-[1fr_1fr] items-start">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
     <SectionHeading
-      eyebrow="About Amaze Matrix"
-      title="A new-generation AI company for local businesses."
-      copy="We're not a traditional software agency. We don't do 6-month projects and 40-page decks. We build working AI systems — chatbots, WhatsApp automation, booking and lead engines — that start handling real conversations in days."
+      eyebrow="About us"
+      title="Founder-led healthcare growth."
+      copy="Amaze Matrix was built to do one thing: bring patients to healthcare brands. No generic agency playbook — just growth work designed for clinics, run directly by the people who started it."
     />
-    <div class="space-y-3">
+
+    <div class="mt-12 grid gap-5 lg:grid-cols-2">
+      {founders.map((f, i) => (
+        <div class="reveal rounded-2xl border border-[#201A14]/10 bg-white p-6 sm:p-8" style={`--reveal-delay:${i*100}ms`} data-tilt>
+          <div class="flex items-center gap-4">
+            <span class="grid size-14 shrink-0 place-items-center rounded-2xl bg-[#241C13] font-display text-xl font-bold text-[#E3C99B]" aria-hidden="true">{f.initials}</span>
+            <div>
+              <p class="font-display text-xl font-semibold tracking-tight">{f.name}</p>
+              <p class="mt-0.5 font-mono2 text-[11px] uppercase tracking-[0.16em] text-[#6E5334]">{f.role}</p>
+            </div>
+          </div>
+          <p class="mt-5 text-[15px] leading-relaxed text-[#201A14]/65">{f.bio}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-5 grid gap-3 sm:grid-cols-3">
       {[
-        ['Local-first', 'Dentists, salons, clinics, gyms, restaurants, real estate — appointment and lead-driven businesses are our home turf.'],
-        ['Systems, not gimmicks', 'No fake dashboards or robot mascots. Every workflow connects to your real calendar, CRM and WhatsApp.'],
-        ['Straightforward', 'Plain timelines, plain pricing, no jargon. You always know exactly what the system does and what it costs.'],
+        ['Healthcare-only', 'We market clinics and medical brands — nothing else. We know the sensitivities, the ad policies and the patient mindset.'],
+        ['Creative that converts', 'Beautiful is the baseline. Every asset is built to move a patient from curiosity to a booked appointment.'],
+        ['Radical transparency', 'You see the dashboards, the spend and the numbers. No black boxes, no jargon, no vanity metrics.'],
       ].map(([t, d], i) => (
         <div class="reveal rounded-2xl border border-[#201A14]/10 bg-[#201A14]/[0.03] p-5" style={`--reveal-delay:${i*80}ms`}>
           <p class="font-display font-semibold text-[#6E5334]">{t}</p>
           <p class="mt-1.5 text-[14.5px] leading-relaxed text-[#201A14]/60">{d}</p>
         </div>
       ))}
-      <p class="reveal font-display text-lg text-[#201A14]/75 pt-2">Your customers are already asking questions. <span class="text-[#6E5334]">Let AI answer them.</span></p>
     </div>
+
+    <p class="reveal font-display text-lg text-[#201A14]/75 pt-6 text-center">Your future patients are searching right now. <span class="text-[#6E5334]">Let them find you first.</span></p>
   </div>
 </section>

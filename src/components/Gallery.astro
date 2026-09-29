@@ -2,11 +2,11 @@
 import SectionHeading from './SectionHeading.astro';
 
 const cards = [
-  { t: 'Lead Capture', flow: ['Website', 'AI', 'Lead', 'CRM'], d: 'Every visitor question becomes a logged, qualified lead.' },
-  { t: 'WhatsApp Booking', flow: ['WhatsApp', 'AI', 'Calendar', 'Confirmed'], d: 'Chat → slot → confirmation without staff touching it.' },
-  { t: 'Missed Lead Recovery', flow: ['Missed inquiry', 'AI follow-up', 'Conversation', 'Booking'], d: 'The 11:47 PM message finally gets an answer.' },
-  { t: 'Review Request', flow: ['Completed service', 'WhatsApp', 'Review request'], d: 'Happy customers are asked at exactly the right moment.' },
-  { t: 'Re-engagement', flow: ['Old customer', 'AI message', 'Conversation', 'New booking'], d: 'Quiet databases wake up and rebook on their own.' },
+  { t: 'Local Search Domination', flow: ['Google', 'SEO', 'Map pack', 'Bookings'], d: 'Own the results when someone searches your treatment in your city.' },
+  { t: 'Campaign → Consultation', flow: ['Meta / Google', 'Ad', 'Landing page', 'Consultation'], d: 'Ads that end in booked consultations, not empty clicks.' },
+  { t: 'Content That Converts', flow: ['Reels', 'Trust', 'Follow', 'Enquiry'], d: 'Educational content that turns scrollers into patients.' },
+  { t: 'Reactivation', flow: ['Past patients', 'Campaign', 'Rebooking', 'Retention'], d: 'Quiet patient lists wake up and come back on their own.' },
+  { t: 'Reputation Engine', flow: ['Great visit', 'Review request', '5-star proof', 'More trust'], d: 'Happy patients asked at exactly the right moment.' },
 ];
 ---
 
@@ -14,9 +14,9 @@ const cards = [
   <div class="mx-auto max-w-7xl px-4 sm:px-6">
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
       <SectionHeading
-        eyebrow="Automation gallery"
-        title="Miniature systems, running everywhere."
-        copy="Each card is a real workflow pattern we deploy. Scroll — they animate like the systems they describe."
+        eyebrow="Growth plays"
+        title="Systems, running everywhere."
+        copy="Each card is a real growth play we deploy for clinics. Scroll — they animate like the funnels they describe."
       />
       <p class="reveal hidden md:block font-mono2 text-[11px] uppercase tracking-[0.2em] text-[#201A14]/30">Scroll →</p>
     </div>
@@ -25,7 +25,7 @@ const cards = [
     <div class="flex w-max gap-4 px-4 pb-1 sm:px-6">
       {cards.map((c, i) => (
         <article class="gal-card snap-start w-[280px] sm:w-[320px] shrink-0 rounded-2xl border border-[#201A14]/10 bg-white p-5 opacity-40 transition-all duration-700" data-tilt>
-          <p class="font-mono2 text-[10px] uppercase tracking-[0.2em] text-[#201A14]/35">0{i+1} · Example workflow</p>
+          <p class="font-mono2 text-[10px] uppercase tracking-[0.2em] text-[#201A14]/35">0{i+1} · Growth play</p>
           <h3 class="mt-2 font-display text-xl font-semibold tracking-tight">{c.t}</h3>
           <div class="mt-4 rounded-xl bg-[#EDE6D6] border border-[#201A14]/[0.07] p-3.5 font-mono2 text-[11px]">
             {c.flow.map((f, j) => (
@@ -38,8 +38,8 @@ const cards = [
           <p class="mt-3 text-[13.5px] leading-relaxed text-[#201A14]/50">{c.d}</p>
         </article>
       ))}
-      <a href="#book" class="snap-start grid w-[240px] shrink-0 place-items-center rounded-2xl border border-dashed border-[#8A6A45]/30 bg-[#8A6A45]/[0.04] p-5 text-center">
-        <div><p class="font-display text-lg font-semibold text-[#6E5334]">Your workflow here →</p><p class="mt-1 text-[13px] text-[#201A14]/50">Tell us what you do. We'll map it.</p></div>
+      <a href="#contact" class="snap-start grid w-[240px] shrink-0 place-items-center rounded-2xl border border-dashed border-[#8A6A45]/30 bg-[#8A6A45]/[0.04] p-5 text-center">
+        <div><p class="font-display text-lg font-semibold text-[#6E5334]">Your clinic here →</p><p class="mt-1 text-[13px] text-[#201A14]/50">Tell us your speciality. We'll map it.</p></div>
       </a>
     </div>
   </div>

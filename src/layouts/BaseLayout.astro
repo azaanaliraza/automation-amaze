@@ -9,8 +9,8 @@ interface Props {
 }
 
 const {
-  title = 'Amaze Matrix — AI Automation Agency for Local Businesses | Chatbots, WhatsApp & Booking Systems',
-  description = 'We build AI chatbots and automation systems for dentists, salons, clinics, gyms, restaurants, real estate and local businesses — turning WhatsApp conversations, website visitors and missed calls into booked appointments, automatically.',
+  title = 'Amaze Matrix — Growth & Marketing for Healthcare | IVF, Dental & Clinics in the UAE',
+  description = 'Healthcare growth agency in the UAE. We bring patients to IVF centres, dental clinics, aesthetic clinics and medical practices through SEO, paid ads, content and funnels that convert. Founded by Azaan Ali Raza and Areeb Ali.',
   ogImage = '/og-image.svg',
   canonical = 'https://amazematrix.agency/',
 } = Astro.props;
@@ -54,14 +54,18 @@ const site = 'https://amazematrix.agency';
       "name": "Amaze Matrix",
       "description": description,
       "url": site,
-      "slogan": "We build AI systems that work while you don't.",
+      "slogan": "We bring patients to healthcare brands.",
       "areaServed": ["United Arab Emirates", "Dubai", "Abu Dhabi", "Sharjah"],
       "priceRange": "$$",
+      "founder": [
+        { "@type": "Person", "name": "Azaan Ali Raza" },
+        { "@type": "Person", "name": "Areeb Ali" }
+      ],
       "makesOffer": [
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Chatbots for business" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "WhatsApp automation" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Appointment automation" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lead qualification systems" } }
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Healthcare marketing" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO for clinics" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Patient acquisition campaigns" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Medical brand and content" } }
       ],
       "sameAs": []
     })} />
@@ -69,9 +73,9 @@ const site = 'https://amazematrix.agency';
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        { "@type": "Question", "name": "Can you automate WhatsApp?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We build WhatsApp automation that answers FAQs, qualifies leads, books appointments and follows up automatically, connected to your calendar and CRM." } },
-        { "@type": "Question", "name": "Can it book appointments?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The AI checks real availability, proposes slots, confirms bookings and sends reminders." } },
-        { "@type": "Question", "name": "What kind of businesses do you work with?", "acceptedAnswer": { "@type": "Answer", "text": "Appointment and lead-driven local businesses: dentists, salons, clinics, gyms, restaurants, real estate, car dealers, beauty clinics, coaching centres and home services." } }
+        { "@type": "Question", "name": "Do you only work with healthcare clinics?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We work exclusively with healthcare and medical brands — IVF centres, dental clinics, aesthetic clinics, medical centres and specialist practices across the UAE." } },
+        { "@type": "Question", "name": "How do you get patients for clinics?", "acceptedAnswer": { "@type": "Answer", "text": "We combine local SEO, paid search and social campaigns, educational content and conversion-focused landing pages — so patients find you, trust you, and book." } },
+        { "@type": "Question", "name": "Which cities in the UAE do you serve?", "acceptedAnswer": { "@type": "Answer", "text": "We work with clinics across Dubai, Abu Dhabi, Sharjah and the wider UAE." } }
       ]
     })} />
   </head>

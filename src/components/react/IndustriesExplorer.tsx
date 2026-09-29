@@ -9,23 +9,21 @@ type Industry = {
 };
 
 const INDUSTRIES: Industry[] = [
-  { id: 'dentists', label: 'Dentists', example: '“Can I book a cleaning tomorrow?”', reply: 'AI checks chair availability → books → sends reminders', flow: ['Patient', 'WhatsApp', 'AI', 'Service', 'Availability', 'Appointment'] },
-  { id: 'salons', label: 'Salons', example: '“Do you have a slot at 6 today?”', reply: 'AI matches stylist + service → confirms in seconds', flow: ['Customer', 'Instagram / WhatsApp', 'AI', 'Service selection', 'Calendar', 'Booking'] },
-  { id: 'clinics', label: 'Clinics', example: '“Do you treat back pain? What are timings?”', reply: 'AI answers FAQs → triages → books the right doctor', flow: ['Patient', 'Website', 'AI', 'Triage', 'Doctor match', 'Appointment'] },
-  { id: 'gyms', label: 'Gyms', example: '“Can I come for a trial?”', reply: 'AI offers trial slots → registers → follows up', flow: ['Prospect', 'Instagram', 'AI', 'Trial offer', 'Registration', 'Follow-up'] },
-  { id: 'realestate', label: 'Real Estate', example: '“Is the 2BHK still available?”', reply: 'AI qualifies budget + timeline → notifies agent', flow: ['Lead', 'Website', 'AI', 'Property preference', 'Qualification', 'Agent notification'] },
-  { id: 'restaurants', label: 'Restaurants', example: '“Table for 4 tonight?”', reply: 'AI checks covers → reserves → confirms on WhatsApp', flow: ['Guest', 'WhatsApp', 'AI', 'Party size', 'Table map', 'Reservation'] },
-  { id: 'cardealers', label: 'Car Dealers', example: '“Is the test drive available Saturday?”', reply: 'AI qualifies intent → schedules test drive', flow: ['Buyer', 'Website', 'AI', 'Model interest', 'Qualification', 'Test drive'] },
-  { id: 'beauty', label: 'Beauty', example: '“How much is laser? Any offers?”', reply: 'AI shares packages → books consultation', flow: ['Client', 'WhatsApp', 'AI', 'Treatment', 'Package', 'Consultation'] },
-  { id: 'homeservices', label: 'Home Services', example: '“Can someone fix my AC today?”', reply: 'AI captures address + issue → dispatches job', flow: ['Homeowner', 'Phone / WhatsApp', 'AI', 'Issue', 'Slot', 'Job booked'] },
-  { id: 'coaching', label: 'Coaching', example: '“What are the batch timings?”', reply: 'AI shares batches → enrols → collects fees info', flow: ['Student', 'Website', 'AI', 'Course', 'Batch', 'Enrolment'] },
+  { id: 'ivf', label: 'IVF & Fertility', example: '“What is the success rate at your clinic?”', reply: 'Educational content + retargeting → free consultation booking', flow: ['Awareness', 'Google / Meta', 'Trust content', 'Consultation'] },
+  { id: 'dental', label: 'Dental Clinics', example: '“How much is Invisalign in Dubai?”', reply: 'SEO + landing page → WhatsApp enquiry → booked appointment', flow: ['Search', 'SEO', 'Landing page', 'Booking'] },
+  { id: 'aesthetic', label: 'Aesthetic Clinics', example: '“Do you do laser hair removal? Any offers?”', reply: 'Social campaigns + offers → DM automation → clinic visit', flow: ['Instagram', 'Ad creative', 'Offers', 'Visit'] },
+  { id: 'medical', label: 'Medical Centres', example: '“Which doctor should I see for this?”', reply: 'Service-page SEO → online booking → reminders', flow: ['Search', 'Service pages', 'Booking', 'Reminders'] },
+  { id: 'derma', label: 'Dermatology', example: '“Is this treatment safe for my skin type?”', reply: 'Before/after content + education → specialist consultation', flow: ['Social proof', 'Content', 'Trust', 'Consultation'] },
+  { id: 'physio', label: 'Physiotherapy', example: '“I have lower back pain — can you help?”', reply: 'Local SEO + intake form → assessment booking', flow: ['Local search', 'Intake form', 'Assessment', 'Program'] },
+  { id: 'mental', label: 'Mental Health', example: '“Do you offer online sessions?”', reply: 'Sensitive, private funnels → booked first session', flow: ['Google', 'Private funnel', 'First session', 'Care plan'] },
+  { id: 'specialist', label: 'Specialist Practices', example: '“When is the next available appointment?”', reply: 'Authority content + ads → calendar booking', flow: ['Authority', 'Ads', 'Calendar', 'Patient'] },
 ];
 
 export default function IndustriesExplorer() {
   const [active, setActive] = useState(INDUSTRIES[0]!);
   return (
     <div className="grid gap-5 lg:grid-cols-[1fr_1.1fr]">
-      <div className="flex flex-wrap gap-2 content-start" role="tablist" aria-label="Industries">
+      <div className="flex flex-wrap gap-2 content-start" role="tablist" aria-label="Healthcare industries">
         {INDUSTRIES.map((ind) => {
           const on = ind.id === active.id;
           return (
@@ -44,11 +42,11 @@ export default function IndustriesExplorer() {
             </button>
           );
         })}
-        <p className="mt-3 w-full text-[14px] text-[#201A14]/45">If your customers message you, we can automate it.</p>
+        <p className="mt-3 w-full text-[14px] text-[#201A14]/45">If your patients search online before they book, we can grow it.</p>
       </div>
 
       <div key={active.id} className="rounded-2xl border border-[#201A14]/10 bg-white p-5 sm:p-7">
-        <p className="font-mono2 text-[11px] uppercase tracking-[0.2em] text-[#6E5334]">{active.label} · example workflow</p>
+        <p className="font-mono2 text-[11px] uppercase tracking-[0.2em] text-[#6E5334]">{active.label} · example growth play</p>
         <p className="chat-in mt-4 max-w-md rounded-2xl rounded-tl-md border border-[#201A14]/10 bg-[#201A14]/[0.06] px-4 py-3 text-[15px]">{active.example}</p>
         <p className="chat-in mt-2 max-w-md rounded-2xl rounded-tr-md border border-[#8A6A45]/25 bg-[#8A6A45]/[0.07] px-4 py-3 text-[14px] text-[#201A14]/85" style={{ animationDelay: '150ms' }}>{active.reply}</p>
         <div className="mt-5 rounded-xl border border-[#201A14]/10 bg-[#EDE6D6] p-4">
@@ -61,7 +59,7 @@ export default function IndustriesExplorer() {
             ))}
           </div>
         </div>
-        <a href="#book" className="mt-5 inline-flex items-center gap-2 text-[14px] font-medium text-[#6E5334] hover:gap-3 transition-all">Automate my {active.label.toLowerCase()} workflow →</a>
+        <a href="#contact" className="mt-5 inline-flex items-center gap-2 text-[14px] font-medium text-[#6E5334] hover:gap-3 transition-all">Grow my {active.label.toLowerCase()} practice →</a>
       </div>
     </div>
   );

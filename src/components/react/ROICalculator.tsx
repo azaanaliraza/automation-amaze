@@ -13,8 +13,8 @@ export default function ROICalculator() {
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
       <div className="space-y-6 rounded-2xl border border-[#201A14]/10 bg-white p-6">
-        <Slider label="Monthly enquiries" value={enquiries} min={20} max={2000} step={10} onChange={setEnquiries} display={String(enquiries)} />
-        <Slider label="Average customer value (AED)" value={value} min={50} max={10000} step={50} onChange={setValue} display={`AED ${value.toLocaleString()}`} />
+        <Slider label="Monthly patient enquiries" value={enquiries} min={20} max={2000} step={10} onChange={setEnquiries} display={String(enquiries)} />
+        <Slider label="Average treatment value (AED)" value={value} min={50} max={10000} step={50} onChange={setValue} display={`AED ${value.toLocaleString()}`} />
         <Slider label="Current booking rate" value={rate} min={1} max={60} step={1} onChange={setRate} display={`${rate}%`} />
         <Slider label="Current response time (minutes)" value={response} min={1} max={480} step={5} onChange={setResponse} display={response >= 60 ? `${Math.floor(response / 60)}h ${response % 60}m` : `${response}m`} />
         <p className="font-mono2 text-[11px] uppercase tracking-[0.16em] text-[#201A14]/30">All calculations are illustrative estimates — not guarantees</p>
@@ -24,13 +24,13 @@ export default function ROICalculator() {
         <div className="mt-4 grid grid-cols-2 gap-3">
           <Stat label="Monthly enquiries" value={String(enquiries)} />
           <Stat label="Potential pipeline" value={`AED ${(pipeline / 1000).toFixed(0)}k`} />
-          <Stat label="Est. bookings" value={String(bookings)} highlight />
+          <Stat label="Est. patients" value={String(bookings)} highlight />
           <Stat label="Est. captured value" value={`AED ${(captured / 1000).toFixed(1)}k`} highlight />
         </div>
         <p className="mt-4 text-[13px] leading-relaxed text-[#201A14]/55">
-          At a {rate}% booking rate, ~{bookings} of {enquiries} enquiries become customers. Faster responses and automatic follow-ups exist to push that rate up — every missed reply is pipeline left on the table.
+          At a {rate}% booking rate, ~{bookings} of {enquiries} enquiries become patients. Faster responses and better follow-up push that rate up — every missed reply is revenue left on the table.
         </p>
-        <a href="#book" className="btn-tactile mt-5 inline-flex items-center gap-2 rounded-full bg-[#241C13] px-6 py-3 text-sm font-semibold text-[#FAF7F1]">Calculate Your Opportunity <span className="arr">→</span></a>
+        <a href="#contact" className="btn-tactile mt-5 inline-flex items-center gap-2 rounded-full bg-[#241C13] px-6 py-3 text-sm font-semibold text-[#FAF7F1]">Calculate Your Opportunity <span className="arr">→</span></a>
       </div>
     </div>
   );

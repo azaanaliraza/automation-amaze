@@ -1,49 +1,46 @@
 ---
 import SectionHeading from './SectionHeading.astro';
 
-const nodes = [
-  { icon: '◉', title: 'WhatsApp', sub: 'incoming message', accent: false },
-  { icon: '✦', title: 'AI understands message', sub: 'intent · language · context', accent: true },
-  { icon: '▤', title: 'Check customer history', sub: 'CRM lookup', accent: false },
-  { icon: '✓', title: 'Qualify lead', sub: 'right questions, automatically', accent: true },
-  { icon: '?', title: 'Is appointment required?', sub: 'decision branch', accent: false, branch: true },
-  { icon: '▦', title: 'Calendar', sub: 'real availability', accent: false },
-  { icon: '✔', title: 'Booking', sub: 'confirmed + reminders', accent: true },
-  { icon: '↗', title: 'WhatsApp confirmation', sub: 'customer notified', accent: false },
+const services = [
+  { t: 'SEO for Clinics', d: 'Rank for what patients actually search — "IVF clinic in Dubai", "dentist near me" — on Google and Maps.', icon: '🔎' },
+  { t: 'Paid Advertising', d: 'Meta and Google campaigns that put treatment-ready patients in front of you, not tyre-kickers.', icon: '🎯' },
+  { t: 'Content & Social Media', d: 'Educational content and short-form video that builds trust before the patient ever walks in.', icon: '📱' },
+  { t: 'Conversion Websites', d: 'Fast, credible clinic sites and landing pages designed around one thing: booked appointments.', icon: '🖥' },
+  { t: 'Brand & Creative', d: 'Photography direction, identity and ad creative that make your clinic look like the premium choice.', icon: '✦' },
+  { t: 'Analytics & Reporting', d: 'Clear monthly reporting on cost per enquiry, cost per patient, and exactly what is driving growth.', icon: '📊' },
 ];
 
-const services = [
-  { t: 'AI Chatbots', d: 'AI assistants that answer customers instantly across WhatsApp and your website.', icon: '💬' },
-  { t: 'WhatsApp Automation', d: 'Turn WhatsApp into an automated sales and support channel.', icon: '📲' },
-  { t: 'Appointment Automation', d: 'Let customers book directly while your calendar stays synchronized.', icon: '📅' },
-  { t: 'Lead Qualification', d: 'Automatically ask the right questions and identify serious prospects.', icon: '🎯' },
-  { t: 'Follow-ups', d: "Automatically follow up with customers who didn't book.", icon: '🔁' },
-  { t: 'CRM Automation', d: 'Connect conversations to your existing customer systems.', icon: '🗄' },
-  { t: 'Custom AI Agents', d: 'AI agents built around the specific workflows of your business.', icon: '⚙' },
+const steps = [
+  { icon: '◉', title: 'Patient searches', sub: 'Google · social · referral', accent: false },
+  { icon: '✦', title: 'Finds your clinic', sub: 'ranking · presence · proof', accent: true },
+  { icon: '▤', title: 'Lands on your page', sub: 'credible · fast · clear', accent: false },
+  { icon: '✓', title: 'Books an appointment', sub: 'frictionless CTA', accent: true },
+  { icon: '?', title: 'Shows up?', sub: 'reminders · follow-up', accent: false, branch: true },
+  { icon: '▦', title: 'Becomes a patient', sub: 'retained · referred', accent: true },
 ];
 ---
 
-<section id="systems" class="section-bone relative py-24 sm:py-32 overflow-hidden">
+<section id="services" class="section-bone relative py-24 sm:py-32 overflow-hidden">
   <div class="grid-lines-dark absolute inset-0 opacity-60" aria-hidden="true"></div>
   <div class="relative mx-auto max-w-7xl px-4 sm:px-6">
     <SectionHeading dark={false}
-      eyebrow="What we build"
-      title="We don't sell chatbots. We build systems."
-      copy="A chatbot answers. A system understands, decides, books, follows up, and logs everything — connected to the tools you already use."
+      eyebrow="What we do"
+      title="We don't sell posts. We build patient pipelines."
+      copy="Posting is not marketing. A real growth system makes your clinic findable, credible and easy to book — then measures every step."
     />
 
     <div class="mt-14 grid gap-10 lg:grid-cols-[420px_1fr] lg:gap-14">
-      <!-- builder visual -->
+      <!-- journey visual -->
       <div class="reveal relative rounded-2xl border border-[#241C13]/10 bg-white p-5 sm:p-6 text-[#201A14] shadow-[0_30px_80px_-30px_rgba(0,0,0,0.5)]" id="builder">
         <div class="mb-4 flex items-center justify-between">
-          <p class="font-mono2 text-[10px] uppercase tracking-[0.2em] text-[#201A14]/40">Automation builder · live</p>
+          <p class="font-mono2 text-[10px] uppercase tracking-[0.2em] text-[#201A14]/40">Patient journey · live</p>
           <span class="flex items-center gap-1.5 font-mono2 text-[10px] uppercase tracking-widest text-[#6E5334]"><span class="size-1.5 rounded-full bg-[#241C13] animate-pulse"></span>Running</span>
         </div>
         <div class="relative">
           <div class="absolute left-[42px] sm:left-[46px] top-2 bottom-2 w-px bg-[#201A14]/10" aria-hidden="true"></div>
           <div id="builder-line" class="absolute left-[42px] sm:left-[46px] top-2 w-px bg-[#241C13] transition-all duration-500" style="height:0%" aria-hidden="true"></div>
           <div class="space-y-2.5">
-            {nodes.map((n, i) => (
+            {steps.map((n, i) => (
               <div class="builder-node relative flex items-center gap-3.5 opacity-30 transition-all duration-500" data-node={i}>
                 <span class:list={["relative z-10 grid size-11 shrink-0 place-items-center rounded-xl border font-display text-lg", n.accent ? "border-[#8A6A45]/40 bg-[#8A6A45]/10 text-[#6E5334]" : "border-[#201A14]/15 bg-[#201A14]/[0.04] text-[#201A14]/70"]}>{n.icon}</span>
                 <div class:list={["flex-1 rounded-xl border px-3.5 py-2.5", n.branch ? "border-dashed border-[#96702B]/50 bg-[#96702B]/[0.06]" : "border-[#201A14]/10 bg-[#201A14]/[0.03]"]}>
@@ -67,8 +64,8 @@ const services = [
           </div>
         ))}
         <div class="reveal rounded-2xl bg-[#241C13] p-5 text-[#F6F0E4] sm:col-span-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <p class="font-display text-lg font-medium tracking-tight">Not sure what to automate first? <span class="text-[#F6F0E4]/60">We'll map it for free.</span></p>
-          <a href="#book" class="btn-tactile shrink-0 rounded-full bg-[#DCC096] px-5 py-2.5 text-sm font-semibold text-[#241C13]">Get a free audit <span class="arr">→</span></a>
+          <p class="font-display text-lg font-medium tracking-tight">Not sure what's limiting your clinic's growth? <span class="text-[#F6F0E4]/60">We'll map it for free.</span></p>
+          <a href="#contact" class="btn-tactile shrink-0 rounded-full bg-[#DCC096] px-5 py-2.5 text-sm font-semibold text-[#241C13]">Get a free growth audit <span class="arr">→</span></a>
         </div>
       </div>
     </div>
